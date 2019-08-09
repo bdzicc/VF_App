@@ -1,0 +1,91 @@
+﻿@model WebApplicationVF.Models.TextModel
+@{
+    ViewBag.Title = "Message";
+    if (Session["CurrentUser"] == null)
+    {
+        Response.Redirect("/Home/Index");
+    }
+}
+
+<html>
+<head>
+<Title>Message</Title>
+</head>
+<body>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("About", "About", "Misc")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Misc")</li>
+            <li>@Html.ActionLink("Message", "Message", "Misc")</li>
+
+        </ul>
+       <br><input type="button" value="Logout" onclick="location.href='@Url.Action("Logout", "Misc")'" />
+    </div>
+<h3>
+    Welcome: @Session["CurrentUser"].ToString()
+</h3>
+
+    <h2>
+        Enter phone numbers below and the message to be sent out:
+    </h2>
+
+
+
+
+    <div id="text">
+        @using (Html.BeginForm("SendText", "Misc", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Phone1)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Phone1)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Phone2)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Phone2)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Phone3)
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Phone3, new { @type = "number" }) 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.SMSMessage)
+                    </td>
+                    <td>
+                        @Html.TextAreaFor(model => model.SMSMessage)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input class="btn btn-primary btn-lg" type="submit" value="Submit">
+                        
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    if (Session["CurrentUser"] == null)
+    {
+        Response.Redirect("/Home/Index");
+    }
+
+}
+
+<html>
+<head>
+    <title>Contact</title>
+</head>
+<body>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("About", "About", "Misc")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Misc")</li>
+            <li>@Html.ActionLink("Message", "Message", "Misc")</li>
+        </ul>
+        <br><input type="button" value="Logout" onclick="location.href='@Url.Action("Logout", "Misc")'" />
+    </div>
+    <h3>
+        Welcome: @Session["CurrentUser"].ToString()
+    </h3>
+
+    <p>
+        Sed sit amet lacinia lorem. Vestibulum sodales vestibulum commodo. Cras pharetra feugiat nibh.
+        Nulla laoreet in lacus id vehicula. In hac habitasse platea dictumst. Maecenas scelerisque massa sed lobortis gravida.
+        Maecenas tempor dictum interdum. Nullam eleifend eleifend augue, eget mollis ligula malesuada dignissim
+    </p>
+</body>
+</html>

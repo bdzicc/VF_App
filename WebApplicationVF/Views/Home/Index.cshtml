@@ -1,0 +1,48 @@
+﻿@model WebApplicationVF.Models.LoginModel
+@{
+    ViewBag.Title = "Index";
+
+}
+
+
+
+<html>
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <h1>Welcome</h1>
+        <h3>Please login below:</h3>
+
+        <div id="login">
+            @using (Html.BeginForm("Verify", "Home", FormMethod.Post))
+            {
+                <table>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.UserName) 
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(model => model.UserName) 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.Password)
+                        </td>
+                        <td>   
+                            @Html.PasswordFor(model => model.Password)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="btn btn-primary btn-lg" type="submit" value="Submit"> 
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+
+    </body>
+</html>
+
